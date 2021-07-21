@@ -14,33 +14,41 @@
 
 #------IMPORTS--------------------------------------------------------------------------
 
-#------FUNCTIONS------------------------------------------------------------------------
+#------FUNCTIONS------------------------------------------------------------------------\
+
+def tempC_converter(f):
+    '''This function returns the Celsius temp equivalant of the Fahrenheit argument passed to it'''
+    
+    c = (f - 32) * (5 / 9)
+
+    return c
 
 #------MAIN EXECUTING CODE--------------------------------------------------------------
-
 
 temp_count = 0
 temp_total = 0
 
-answer = "y"
+print("\n\t\tWelcome to the Fahrenheit to Celsius Converter")
 
-while answer == "y" or answer == "Y":
+#answer = "y"
+total = int(input("\n\t\tHow many temperatures would you like to check today:  "))
 
-    tem
-    pF = float(input("\n\n\t\tPlease enter the temperature in Fahrenheit: > "))
+while temp_count < total:
 
-    tempC = (tempF - 32) * (5 / 9)
+    tempF = float(input("\n\n\t\tPlease enter the temperature in Fahrenheit: > "))
+
+    tempC = tempC_converter(tempF)
 
     temp_count += 1
     temp_total += tempF
 
     print(f"\n\t\tTEMP# {temp_count}\tTEMP {tempF:.1f}F = TEMP {tempC:.1f}C")
 
-    answer = input("\n\n\t\tWould you like to enter another temperature? [y / n]")
+    #answer = input("\n\n\t\tWould you like to enter another temperature? [y / n] ")
 
 avg_tempF = temp_total / temp_count
 
-avg_tempC = (avg_tempF - 32) * (5 / 9)
+avg_tempC = tempC_converter(avg_tempF)
 
 print("\n\t\tHere is your final session information: ")
 print("\t\tTOTAL TEMPS ENTERED: {0}".format(temp_count))
