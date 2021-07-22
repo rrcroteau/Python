@@ -6,7 +6,7 @@
 
 #VARIABLE DICTIONARY
 #max_cap - max capacity of the room
-#attendees - number of registered attendees
+#people - number of registered people attending
 #diff - the difference between capacity and attendees (max_cap - attendees)
 #answer - loop control
 
@@ -18,7 +18,7 @@
 
 answer = "y" 
 
-print("\n\n\tWelcome to the Room Capacity Fire Code Validator")
+print("\n\n\t\tWelcome to the Room Capacity Fire Code Validator")
 
 #enter the loop
 while answer == "y":
@@ -26,13 +26,13 @@ while answer == "y":
     #solicit capacity of room
     max_cap = int(input("\n\tPlease enter the maximum capacity of the room > "))
     
-    #solicity number of registered attendees
-    attendees = int(input("\n\tPlease enter the number of registered attendees > "))
+    #solicit number of registered attendees
+    people = int(input("\n\tPlease enter the number of registered attendees > "))
     
     #determine the difference in the capacity and registered attendees
-    diff = max_cap - attendees
+    diff = max_cap - people
 
-    #output whether more people can continue to register or if attendance must be curtailed based on a positive(even) or negative difference
+    #output whether more people can continue to register or if attendance must be curtailed based on a positive(including 0 in this case) or negative difference
     if diff >=0:
 
         print(f"\n\tThe meeting is able to be held in this room. {diff} more people are able to register for the meeting.")
@@ -40,10 +40,6 @@ while answer == "y":
     else:
         
         print(f"\n\tThe meeting is unable to be held in this room. {abs(diff)} people must be informed they cannot attend the event.")
-
-
-
-
 
     answer = input("\n\nWould you like to validate another room? [y/n] ")
 
