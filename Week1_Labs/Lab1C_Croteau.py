@@ -1,5 +1,5 @@
 #Ron Croteau
-#Lab 1B
+#Lab 1C
 #July 21, 2021
 
 #PROGRAM PROMPT:  Rewrite Lab #1A using functions.  You must have the following functions:A.  A function that asks the user for the maximum capacity of the rooms and returns that value.Use capacity for the name of the function.B.  A function that asks the user for the number of people (attendees) attending the conference and returns that value. Use attendees for the name of the function.C.  A function that accepts/is passed the values returned by the functions capacity and attendees and returns the difference between the room capacity and the attendees. Use register for the name of the function.D.  A function that prompts the user to see if they want to check anymore rooms. This function should only return if the user selects a lower/uppercase selects a lower/uppercase y or n.The main part of the program should determine whether the meeting can be held. If the number of people exceeds the maximum room capacity, the program announces that the meeting cannot be held as planned due to the fire regulation and tells how many people must be excluded in order to meet the fire regulations.
