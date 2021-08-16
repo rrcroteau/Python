@@ -3,11 +3,6 @@
 #August 9, 2021
 #SE126.02
 
-#Ron Croteau
-#Lab 4A
-#August 9, 2021
-#SE126.02
-
 #PROGRAM PROMPT: 4B. After completing 4A, use it as a basis for 4B.  You should have the following lists for each person in the original file:   LIST0      LIST1       LIST2    LIST3       LIST4              LIST5
 #       Firstname   Lastname   Age      Nickname    House Allegiance   House Motto
 # Build a program, utilizing these lists, that allows a user to select options from a menu:
