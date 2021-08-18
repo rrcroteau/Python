@@ -38,9 +38,27 @@ def menu():
 
     choice = input("\n\t\tPlease enter a choice from the list above >  ")
 
-    while choice < "1" or choice > "5":
+    #verify that the user input a digit (integer) so that the validation works properly
+    while not choice.isdigit(): 
+
+        print("\n\t**Input Error**")
+        print("You may only enter integers (0-9)")
+        choice = input("\n\t\tPlease enter a choice from the list above >  ")
+
+    choice = int(choice)
+
+    while choice < 1 or choice > 5:
+
             print("\n\t**Input Error**")
-            choice = input("\nPlease enter a valid choice > ")
+            choice = input("\nPlease enter a valid choice (1-5)> ")
+
+            while not choice.isdigit(): 
+
+                print("\n\t**Input Error**")
+                print("You may only enter integers (0-9)")
+                choice = input("\n\t\tPlease enter a choice from the list above >  ")
+
+            choice = int(choice)
 
     return choice
 
@@ -48,18 +66,35 @@ def typeMenu():
 
     '''Displays a menu to the user for armor types. Validates the user's choice before returning the choice'''
 
-    print("\t\tARMOR TYPES")
+    print("\n\t\tARMOR TYPES")
     print("1. Print all Plate")
     print("2. Print all Cloth")
     print("3. Print all Leather")
     print("4. Print all Mail")
-    print("5. EXIT")
 
     choice = input("\n\t\tPlease enter a choice from the list above >  ")
 
-    while choice < "1" or choice > "5":
+    #verify that the user input a digit (integer) so that the validation works properly
+    while not choice.isdigit(): 
+
+        print("\n\t**Input Error**")
+        print("You may only enter integers (0-9)")
+        choice = input("\n\t\tPlease enter a choice from the list above >  ")
+
+    choice = int(choice)
+
+    while choice < 1 or choice > 4:
+
             print("\n\t**Input Error**")
-            choice = input("\nPlease enter a valid choice > ")
+            choice = input("\nPlease enter a valid choice (1-4)> ")
+
+            while not choice.isdigit(): 
+
+                print("\n\t**Input Error**")
+                print("You may only enter integers (0-9)")
+                choice = input("\n\t\tPlease enter a choice from the list above >  ")
+
+            choice = int(choice)
 
     return choice
 
@@ -67,7 +102,7 @@ def slotMenu():
 
     '''Displays a menu to the user for armor slots. Validates the user's choice before returning the choice'''
 
-    print("\t\tARMOR SLOT")
+    print("\n\t\tARMOR SLOT")
     print("1. Print all Head")
     print("2. Print all Shoulders")
     print("3. Print all Chest")
@@ -76,13 +111,72 @@ def slotMenu():
     print("6. Print all Hands")
     print("7. Print all Legs")
     print("8. Print all Boots")
-    print("9. EXIT")
 
     choice = input("\n\t\tPlease enter a choice from the list above >  ")
 
-    while choice < "1" or choice > "9":
+    #verify that the user input a digit (integer) so that the validation works properly
+    while not choice.isdigit(): 
+
+        print("\n\t**Input Error**")
+        print("You may only enter integers (0-9)")
+        choice = input("\n\t\tPlease enter a choice from the list above >  ")
+
+    choice = int(choice)
+
+    while choice < 1 or choice > 8:
+
             print("\n\t**Input Error**")
-            choice = input("\nPlease enter a valid choice > ")
+            choice = input("\nPlease enter a valid choice (1-8)> ")
+
+            while not choice.isdigit(): 
+
+                print("\n\t**Input Error**")
+                print("You may only enter integers (0-9)")
+                choice = input("\n\t\tPlease enter a choice from the list above >  ")
+
+            choice = int(choice)
+
+    return choice
+
+def bossMenu():
+
+    '''Displays a menu to the user for armor slots. Validates the user's choice before returning the choice'''
+
+    print("\n\t\tBOSS")
+    print(" 1. The Tarragrue")
+    print(" 2. The Eye of the Jailer")
+    print(" 3. The Nine")
+    print(" 4. Remnant of Ner'zhul")
+    print(" 5. Soulrender Dormazain")
+    print(" 6. Painsmith Raznal")
+    print(" 7. Guardian of the First Ones")
+    print(" 8. Fatescribe Roh-Kalo")
+    print(" 9. Kel'Thuzad")
+    print("10. Sylvanas Windrunner")
+        
+    choice = input("\n\t\tPlease enter a choice from the list above >  ")
+
+    #verify that the user input a digit (integer) so that the validation works properly
+    while not choice.isdigit(): 
+
+        print("\n\t**Input Error**")
+        print("You may only enter integers (0-9)")
+        choice = input("\n\t\tPlease enter a choice from the list above >  ")
+
+    choice = int(choice)
+
+    while choice < 1 or choice > 10:
+
+            print("\n\t**Input Error**")
+            choice = input("\nPlease enter a valid choice (1-10)> ")
+
+            while not choice.isdigit(): 
+
+                print("\n\t**Input Error**")
+                print("You may only enter integers (0-9)")
+                choice = input("\n\t\tPlease enter a choice from the list above >  ")
+
+            choice = int(choice)
 
     return choice
 
@@ -134,203 +228,349 @@ for i in range(0, len(boss)):
 #present menu to user and store choice to variable for loop control
 choice = menu()
 
-while choice != "5":
+while choice != 5:
 
-    if choice == "1": #sort by armor type
+    if choice == 1: #sort by armor type
 
-        typeChoice = typeMenu()
+        choice = typeMenu()
+      
+        if choice == 1: #plate
 
-        if typeChoice != "5":
-        
-            if typeChoice == "1": #plate
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
 
-                #headers for data
-                print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
-                print("---------------------------------------------------------------------------------------")
+            for i in range(0, len(boss)):
 
-                for i in range(0, len(boss)):
+                if armorType[i] == "Plate":
 
-                    if armorType[i] == "Plate":
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()           
 
-                        print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
-                
-                print("\n\n")           
+        elif choice == 2: #cloth
 
-            elif typeChoice == "2": #cloth
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
 
-                #headers for data
-                print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
-                print("---------------------------------------------------------------------------------------")
+            for i in range(0, len(boss)):
 
-                for i in range(0, len(boss)):
+                if armorType[i] == "Cloth":
 
-                    if armorType[i] == "Cloth":
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")   
+            choice = menu()              
+            
+        elif choice == 3: #leather
 
-                        print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
-                
-                print("\n\n")                 
-                
-            elif typeChoice == "3": #leather
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
 
-                #headers for data
-                print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
-                print("---------------------------------------------------------------------------------------")
+            for i in range(0, len(boss)):
 
-                for i in range(0, len(boss)):
+                if armorType[i] == "Leather":
 
-                    if armorType[i] == "Leather":
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n") 
+            choice = menu()
+            
+        elif choice == 4: #mail
 
-                        print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
-                
-                print("\n\n") 
-                
-            else: #mail
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
 
-                #headers for data
-                print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
-                print("---------------------------------------------------------------------------------------")
+            for i in range(0, len(boss)):
 
-                for i in range(0, len(boss)):
+                if armorType[i] == "Mail":
 
-                    if armorType[i] == "Mail":
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()
 
-                        print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
-                
-                print("\n\n")  
-
-        goodbye()
-
-    elif choice == "2": #sort by armor slot
+    elif choice == 2: #sort by armor slot
 
         choice = slotMenu()
-
-        while choice != "9":
         
-            if choice == "1": #head
+        if choice == 1: #head
 
-                #headers for data
-                print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
-                print("---------------------------------------------------------------------------------------")
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
 
-                for i in range(0, len(boss)):
+            for i in range(0, len(boss)):
 
-                    if armorSlot[i] == "Head":
+                if armorSlot[i] == "Head":
 
-                        print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
-                
-                print("\n\n")
-                choice = menu()
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()
 
-            elif choice == "2": #shoulders
+        elif choice == 2: #shoulders
 
-                #headers for data
-                print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
-                print("---------------------------------------------------------------------------------------")
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
 
-                for i in range(0, len(boss)):
+            for i in range(0, len(boss)):
 
-                    if armorSlot[i] == "Shoulders":
+                if armorSlot[i] == "Shoulders":
 
-                        print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
-                
-                print("\n\n")
-                choice = menu()
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()
 
-            elif choice == "3": #chest
+        elif choice == 3: #chest
 
-                #headers for data
-                print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
-                print("---------------------------------------------------------------------------------------")
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
 
-                for i in range(0, len(boss)):
+            for i in range(0, len(boss)):
 
-                    if armorSlot[i] == "Chest":
+                if armorSlot[i] == "Chest":
 
-                        print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
-                
-                print("\n\n")
-                choice = menu()
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()
 
-            elif choice == "4": #belt
+        elif choice == 4: #belt
 
-                #headers for data
-                print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
-                print("---------------------------------------------------------------------------------------")
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
 
-                for i in range(0, len(boss)):
+            for i in range(0, len(boss)):
 
-                    if armorSlot[i] == "Belt":
+                if armorSlot[i] == "Belt":
 
-                        print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
-                
-                print("\n\n")
-                choice = menu()
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()
 
-            elif choice == "5": #bracers
+        elif choice == 5: #bracers
 
-                #headers for data
-                print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
-                print("---------------------------------------------------------------------------------------")
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
 
-                for i in range(0, len(boss)):
+            for i in range(0, len(boss)):
 
-                    if armorSlot[i] == "Bracers":
+                if armorSlot[i] == "Bracers":
 
-                        print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
-                
-                print("\n\n")
-                choice = menu()
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()
 
-            elif choice == "6": #hands
+        elif choice == 6: #hands
 
-                #headers for data
-                print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
-                print("---------------------------------------------------------------------------------------")
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
 
-                for i in range(0, len(boss)):
+            for i in range(0, len(boss)):
 
-                    if armorSlot[i] == "Hands":
+                if armorSlot[i] == "Hands":
 
-                        print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
-                
-                print("\n\n")
-                choice = menu()
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()
 
-            elif choice == "7": #legs
+        elif choice == 7: #legs
 
-                #headers for data
-                print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
-                print("---------------------------------------------------------------------------------------")
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
 
-                for i in range(0, len(boss)):
+            for i in range(0, len(boss)):
 
-                    if armorSlot[i] == "Legs":
+                if armorSlot[i] == "Legs":
 
-                        print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
-                
-                print("\n\n")
-                choice = menu()
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()
 
-            else: #boots
+        elif choice == 8: #boots
 
-                #headers for data
-                print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
-                print("---------------------------------------------------------------------------------------")
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
 
-                for i in range(0, len(boss)):
+            for i in range(0, len(boss)):
 
-                    if armorSlot[i] == "Boots":
+                if armorSlot[i] == "Boots":
 
-                        print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
-                
-                print("\n\n")
-                choice = menu()
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n") 
+            choice = menu()         
 
-        goodbye()          
+    elif choice == 3: #sort by Boss
 
-    elif choice == "3":
+        choice = bossMenu()
+        
+        if choice == 1: #The Tarragrue
 
-        pass
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
+
+            for i in range(0, len(boss)):
+
+                if boss[i] == "The Tarragrue":
+
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()
+
+        elif choice == 2: #The Eye of the Jailer
+
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
+
+            for i in range(0, len(boss)):
+
+                if boss[i] == "The Eye of the Jailer":
+
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()
+
+        elif choice == 3: #The Nine
+
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
+
+            for i in range(0, len(boss)):
+
+                if boss[i] == "The Nine":
+
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()
+
+        elif choice == 4: #Remnant of Ner'zhul
+
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
+
+            for i in range(0, len(boss)):
+
+                if boss[i] == "Remnant of Ner'zhul":
+
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()
+
+        elif choice == 5: #Soulrender Dormazain
+
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
+
+            for i in range(0, len(boss)):
+
+                if boss[i] == "Soulrender Dormazain":
+
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()
+
+        elif choice == 6: #Painsmith Raznal
+
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
+
+            for i in range(0, len(boss)):
+
+                if boss[i] == "Painsmith Raznal":
+
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()
+
+        elif choice == 7: #Guardian of the First Ones
+
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
+
+            for i in range(0, len(boss)):
+
+                if boss[i] == "Guardian of the First Ones":
+
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n")
+            choice = menu()
+
+        elif choice == 8: #Fatescribe Roh-Kalo
+
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
+
+            for i in range(0, len(boss)):
+
+                if boss[i] == "Fatescribe Roh-Kalo":
+
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n") 
+            choice = menu()
+
+        elif choice == 9: #Kel'Thuzad
+
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
+
+            for i in range(0, len(boss)):
+
+                if boss[i] == "Kel'Thuzad":
+
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n") 
+            choice = menu()
+
+        elif choice == 10: #Sylvanas Windrunner
+
+            #headers for data
+            print(f"{'TYPE':8}{'SLOT':10}{'ARMOR NAME':37}{'BOSS':28}{'ILVL':4}")
+            print("---------------------------------------------------------------------------------------")
+
+            for i in range(0, len(boss)):
+
+                if boss[i] == "Sylvanas Windrunner":
+
+                    print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
+            
+            print("\n\n") 
+            choice = menu()
 
     else:
 
@@ -343,18 +583,8 @@ while choice != "5":
             print(f"{armorType[i]:8}{armorSlot[i]:10}{armorName[i]:37}{boss[i]:28}{ilvl[i]:12} ")
         
         print("\n\n")
-    
-    
-
-
-
+        choice = menu()   
+  
 goodbye()
-# #headers for original data
-# print(f"{'FIRST NAME':10}\t{'LAST NAME':10}\t{'AGE':4}\t{'NICKNAME':20}\t{'HOUSE':18}")
-# print("-------------------------------------------------------------------------------")
 
-# #process lists to print original data
-# for i in range(0, records):
-
-#     print(f"{first_name[i]:10}\t{last_name[i]:10}\t{age[i]:<4}\t{nickname[i]:20}\t{house[i]:18}")
 
