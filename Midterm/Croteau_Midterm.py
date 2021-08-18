@@ -3,7 +3,7 @@
 #August 18, 2021
 #SE126.02
 
-#PROGRAM PROMPT: This program allows the user to determine which armor loot drops from the Sanctum of Domination raid bosses in the 9.2 World of Warcraft patch.  The user will be presented a menu(s) where the loot can be sorted by armor type, armor slot, or boss which drops the loot.
+#PROGRAM PROMPT: This program allows the user to determine which armor loot drops from the Sanctum of Domination raid bosses in the 9.2 World of Warcraft patch.  The user will be presented a menu(s) where the loot can be sorted by armor type, armor slot, or boss which drops the loot. The user can print the full loot table or choose to print the sorted lists by type/slot/boss
 
 
 #VARIABLE DICTIONARY:
