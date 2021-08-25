@@ -18,7 +18,7 @@ Richardson,Alfredo,07/05/2000
 Salas,Ann,09/17/1997
 Scott,Arturo,03/25/2000
 Sexton,April,12/12/2000
-Starr,Alice, 07/15/2000
+Starr,Alice,07/15/2000
 Stephens,Adelina,10/22/1997
 Stevenson,Amber,05/05/2001
 Sumlin,Anne,09/27/2002
