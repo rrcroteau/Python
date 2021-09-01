@@ -37,6 +37,8 @@
 #answer --> STR, contains the loop control answer
 #row --> INT, contains the row the user wants to sit in
 #seat --> STR, contains the seat the user wants to sit in
+#confirm --> STR, contains the value of user confirmation on seat choice
+#choice --> STR, contain the choice in certain functions, used for validation purposes 
 
 
 #--IMPORTS--#
@@ -63,59 +65,97 @@ def seatingChart():
 
     print("\n\n\tCroteau Airways -- Flight 9021 PVD to BOS")
     print("---------------------------------------------------------")
-    for i in range(len(seatA)):
+    for i in range(0, 7):
 
-        print(f"|\t\t  Row {i + 1}\t\t{seatA[i]} {seatB[i]}  \t{seatC[i]} {seatD[i]}\t\t|")
+        print(f"|\t\t  Row {i + 1}\t\t{seatsA[i]} {seatsB[i]}  \t{seatsC[i]} {seatsD[i]}\t\t|")
 
     print("---------------------------------------------------------")
 
-def yes_no_choice(choice):
+def yes_no_choice():
 
-    '''This validates that a user enters a 'y' or 'n' when give the choice of [y/n]'''
+    '''This asks the user if they want to add another seat and validates that a user enters a 'y' or 'n' when given the choice of [y/n]'''
     
-    while choice.lower() != "y" and choice.lower() != "n":
+    answer = input("\nWould you like to select another seat? [y/n] > ").lower()
+    
+    while answer != "y" and answer != "n":
 
         print("\n\nInput Error: Please only answer only with a 'y' or 'n'")
-        choice = input("\nPlease choose a valid answer: [y/n] > ")
+        answer = input("\nPlease choose a valid answer: [y/n] > ").lower()
     
-    return choice.lower()
+    return answer
+
+def confirmation(choice):
+
+    '''This validates that a user enters a 'Y' or 'X' when given the choice'''
+    
+    while choice != "Y" and choice != "X":
+
+        print("\n\nInput Error: Please only answer only with a 'Y' or 'X'")
+        choice = input("\nPlease choose a valid answer: [Y/X] > ").upper()
+    
+    return choice
 
 def seatChoice():
 
     '''This get the row and seat the user wants to reserve and returns those values'''
     
     row = input("Please enter the row you would like to sit in [1-7] > ")
-    
-    while not row.isdigit() and (row < 1 or row > 7): 
+       
+    #validate the row choice contains valid input
+    while not row.isdigit():
 
         print("\n\t**Input Error**")
         print("\tYou may only valid row numbers [1-7]")
         row = input("\n\t\tPlease enter a valid row choice > ")
 
-    row = (int(row) - 1) #this changes the row selection to match the list index for that row
+    row = int(row)
+
+    while row < 1 or row > 7:
+
+            print("\n\t**Input Error**")
+            print("\tYou may only enter valid row numbers [1-7]")
+            row = input("\n\t\tPlease enter a valid row choice > ")
+
+            while not row.isdigit(): 
+
+                print("\n\t**Input Error**")
+                print("\tYou may only valid row numbers [1-7]")
+                row = input("\n\t\tPlease enter a valid row choice > ")
+
+            row = int(row)
 
     seat = input("\n\tEnter the seat you want to sit in [A-D] > ").upper()
 
+    #validate the seat choice contains valid input
     while seat != "A" and seat != "B" and seat != "C" and seat != "D":
 
         print("\n\t**Input Error**")
-        print("\tYou may only valid seat selections [A-D]")
+        print("\tYou may only enter valid seat selections [A-D]")
         seat = input("\n\tEnter the seat you want to sit in [A-D] > ").upper()
 
+    #confirm seat choice with user
+    confirm = input(f"\n\nYou selected seat {row}{seat}.  Confirm with 'Y'. Cancel with 'X' > ").upper()
 
-    return row, seat
+    confirm = confirmation(confirm)
 
+    if confirm == "X":
 
+        row, seat = seatChoice()#allows user to select a different seat
+        return row, seat
 
+    else:
+        
+        row = row - 1 #aligns the row with the index of the list (Row 1 is index 0 and so on)
+        return row, seat
 
 
 #--MAIN EXECUTING CODE--#
 
 #create the lists for the seats
-seatA = ["A", "A", "A", "A", "A", "A", "A"]
-seatB = ["B", "B", "B", "B", "B", "B", "B"]
-seatC = ["C", "C", "C", "C", "C", "C", "C"]
-seatD = ["D", "D", "D", "D", "D", "D", "D"]
+seatsA = ["A", "A", "A", "A", "A", "A", "A"]
+seatsB = ["B", "B", "B", "B", "B", "B", "B"]
+seatsC = ["C", "C", "C", "C", "C", "C", "C"]
+seatsD = ["D", "D", "D", "D", "D", "D", "D"]
 chosen = [] #will store data for Extra Credit of printing all seats chosen at end of session
 
 answer = "y" #loop control variable
@@ -129,12 +169,70 @@ while answer == "y":
     #get the row and seat desired by the user
     row, seat = seatChoice()
 
+    if seat == "A":
 
-    answer = input("\nWould you like to select another seat? [y/n] > ")
+        if seatsA[row] == seat:#confirms the seat is available (i.e. not an "X")
 
-    answer = yes_no_choice(answer)#validate input
+            seatsA[row] = "X" #marks this seat as taken so it cannot be chosen again
+            #append the confirmed available seat to the chosen list to print all seats confirmed for extra credit
+            chosen.append(f"{row + 1}{seat}")
+            #print(chosen)
+
+        else:
+
+            print("\n\tI'm sorry, but that seat is not currently available.")
+
+    elif seat == "B":
+
+        if seatsB[row] == seat:#confirms the seat is available (i.e. not an "X")
+
+            seatsB[row] = "X"#marks this seat as taken so it cannot be chosen again
+            #append the confirmed available seat to the chosen list to print all seats confirmed for extra credit
+            chosen.append(f"{row + 1}{seat}")
+
+        else:
+
+            print("\n\tI'm sorry, but that seat is not currently available.")
+
+    elif seat == "C":
+
+        if seatsC[row] == seat:#confirms the seat is available (i.e. not an "X")
+
+            seatsC[row] = "X"#marks this seat as taken so it cannot be chosen again
+            #append the confirmed available seat to the chosen list to print all seats confirmed for extra credit
+            chosen.append(f"{row + 1}{seat}")
+
+        else:
+
+            print("\n\tI'm sorry, but that seat is not currently available.")
+
+    else:
+
+        if seatsD[row] == seat:#confirms the seat is available (i.e. not an "X")
+
+            seatsD[row] = "X"#marks this seat as taken so it cannot be chosen again
+            #append the confirmed available seat to the chosen list to print all seats confirmed for extra credit
+            chosen.append(f"{row + 1}{seat}")
+
+        else:
+
+            print("\n\tI'm sorry, but that seat is not currently available.")
+
+    answer = yes_no_choice()#loop control
 
     clear() #clear the screen for a cleaner UI
+
+#print the seats confirmed during the session to the user (Extra Credit)
+seatingChart()#one final print out of the current seating chart
+print("You reserved the followed seats during this session:\n")
+for i in range(0,len(chosen)):
+
+    print(f"\tSeat {i+1}: {chosen[i]}")
+
+input("\n\n\nPlease press ENTER to continue . . .")
+
+#goodbye
+print("\n\tThank you for choosing Croteau Airways for all your travel needs!")
 
 
 
