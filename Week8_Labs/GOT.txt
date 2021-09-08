@@ -1,0 +1,25 @@
+battleAxe,,Gendry,21,House Stark
+butterfly01,,Missandei,19,House Targaryen
+spider,,Varys,46,House Targaryen
+coins4eyes,Arryn,John,50,House Baratheon of King's Landing
+sweetBaby,Arryn,Robin,14,House Stark
+stagKing,Baratheon,Robert,40,House Baratheon of King's Landing
+kingWildling,Gianstbane,Tormund,38,House Stark
+goldenHand,Lannister,Jaime,40,House Lannister
+lioness,Lannister,Cersei,40,House Lannister
+theFairest,Lannister,Myrcella,15,House Baratheon of King's Landing
+theFallen,Lannister,Tommen,16,House Baratheon of King's Landing
+theSwollen,Lannister,Joffrey,17,House Baratheon of King's Landing
+littleLionMan,Lannister,Tyrion,38,House Targaryen
+greyFriend,Mormont,Jorah,42,House Targaryen
+onionKnight,Seaworth,Davos,52,House Stark
+ghost,Snow,Jon,22,House Stark
+theWolf,Stark,Robb,24,House Stark
+raven3,Stark,Brandon,17,House Stark
+girl,Stark,Arya,16,House Stark
+littleDove,Stark,Sansa,20,House Stark
+father,Stark,Eddard,40,House Baratheon of King's Landing
+goldenCrown,Targaryen,Viserys,24,House Targaryen
+khaleesi,Targaryen,Daenerys,21,House Targaryen
+flightlessBird,Tully,Lysa,42,House Baelish
+mother,Tully,Catelyn,43,House Stark

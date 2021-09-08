@@ -233,13 +233,3 @@ input("\n\n\nPlease press ENTER to continue . . .")
 
 #goodbye
 print("\n\tThank you for choosing Croteau Airways for all your travel needs!")
-
-
-
-
-
-
-
-
-
-
