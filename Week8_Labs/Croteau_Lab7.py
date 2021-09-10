@@ -122,12 +122,15 @@ def swap(n, j):
 
 def goodbye():
 
-    '''This function prints a custom goodbye message to the user'''
+    '''This function prints a randomized goodbye message to the user'''
     
-    quotes = ["'Winter is coming.' — Ned Stark", "'You know nothing Jon Snow.' — Ygritte", "'Fear cuts deeper than swords.' — Arya Stark", "'Everything before the word \'but\' is horseshit.' — Jon Snow", "'A lion doesn’t concern himself with the opinions of a sheep.' — Tywin Lannister"]
+    quotes = ["'Winter is coming.' — Ned Stark", "'You know nothing Jon Snow.' — Ygritte", "'Fear cuts deeper than swords.' — Arya Stark", "'Everything before the word \"but\" is horseshit.' — Jon Snow", "'A lion doesn’t concern himself with the opinions of a sheep.' — Tywin Lannister"]
     #will customize this later for the extra credit
 
-    print("Goodbye")
+    n = randrange(len(quotes))
+    print("\n\n\n")
+    print(quotes[n])
+    print("\n\tGoodbye and Thank You for Using the Program")
 
 #--MAIN EXECUTING CODE--#
 
