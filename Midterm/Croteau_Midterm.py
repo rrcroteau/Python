@@ -3,7 +3,7 @@
 #August 18, 2021
 #SE126.02
 
-#PROGRAM PROMPT: This program allows the user to determine which armor loot drops from the Sanctum of Domination raid bosses in the 9.2 World of Warcraft patch.  The user will be presented a menu(s) where the loot can be sorted by armor type, armor slot, or boss which drops the loot. The user can print the full loot table or choose to print the sorted lists by type/slot/boss
+#PROGRAM PROMPT: This program allows the user to determine which armor loot drops from the Sanctum of Domination raid bosses in the 9.1 World of Warcraft patch.  The user will be presented a menu(s) where the loot can be sorted by armor type, armor slot, or boss which drops the loot. The user can print the full loot table or choose to print the sorted lists by type/slot/boss
 
 
 #VARIABLE DICTIONARY:
@@ -15,13 +15,17 @@
 #armorSlot --> LIST, STR, contains the slot the armor is worn (eg. Head) ( rec[1] )
 #armorName --> LIST, STR, contains the name of the armor piece (eg. Shadowsteel Facecage) ( rec[2] )
 #boss --> LIST, STR, contains the name of the boss that drops the armor piece (eg. The Tarragrue) ( rec[3] )
-#ilvl --> LIST, STR, contains the item level of the armor, which is dependant on the boss ( rec[3] that drops the armor
+#ilvl --> LIST, STR, contains the item level of the armor, which is dependant on the boss ( rec[3] ) that drops the armor
+#order --> LIST, INT, contains the order of which the bosses appear in the raid
+#_id --> LIST, INT, contains a unique ID for each piece of armor that is dropped
+#startID --> INT, the starting ID for items, will be incremented on
 #choice --> STR, contains the choice the user made in a menu 
 
 #--IMPORTS--#
 
 #for text file handling
 import csv
+import random
 
 #--FUNCTIONS--#
 
@@ -195,6 +199,8 @@ armorSlot = []
 armorName = []
 boss = []
 ilvl = []
+order = []
+_id = []
 
 #connect to file and extract data into respective lists
 with open("Midterm/drops.csv") as csvfile:
@@ -222,8 +228,61 @@ for i in range(0, len(boss)):
     else:
 
         ilvl.append("252")
+#print(ilvl)    
 
-#print(ilvl)
+#determine the order of the boss appearance and append to list
+
+for i in range(0, len(boss)):
+
+    if boss[i] == "The Tarragrue":
+
+        order.append(1)
+    
+    elif boss[i] == "The Eye of the Jailer":
+
+        order.append(2)
+    
+    elif boss[i] == "The Nine":
+
+        order.append(3)
+
+    elif boss[i] == "Remnant of Ner'zhul":
+
+        order.append(4)
+
+    elif boss[i] == "Soulrender Dormazain":
+
+        order.append(5)
+
+    elif boss[i] == "Painsmith Raznal":
+
+        order.append(6)
+
+    elif boss[i] == "Guardian of the First Ones":
+
+        order.append(7)
+
+    elif boss[i] == "Fatescribe Roh-Kalo":
+
+        order.append(8)
+        
+    elif boss[i] == "Kel'Thuzad":
+
+        order.append(9)
+
+    else:
+
+        order.append(10)
+#print(order)
+
+#append a unique id to each item for use in a binary search
+startID = 10000
+
+for i in range(0, len(armorName)):
+
+    _id.append(startID)
+    startID += 1
+#print(_id)
 
 #present menu to user and store choice to variable for loop control
 choice = menu()
