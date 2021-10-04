@@ -23,6 +23,9 @@
 #*name*_frame --> FRAME widget contains the name of a frame which is relavant to what frame is holding all the widgets on the current view
 #*name*_menu --> LABEL widget which has a relevant name of menu being displayed and acts as the the FRAME header
 #*name*_button --> BUTTON widget which has a relevant name of text being displayed on the button
+#e --> ENTRY widget which will store the STR the user entered in the field once it has been submitted with a BUTTON click
+#header_*name* --> LABEL widget which has a relavent name for the header it is used to display
+#armor_*name* --> LABEL widget which has a relavent name for the armor it is used to display
 
 #--IMPORTS--#
 
@@ -104,7 +107,7 @@ def menu(previous_frame):
 def typeMenu():
 
     '''Displays the armor type menu to the user'''
-    #destroy the main menu frame
+    #destroy the previous menu frame
     main_frame.destroy()
     #create new frame for current selection and display
     global type_frame#make this global so the frame can be deleted in other menus without having to pass it
@@ -134,7 +137,7 @@ def typeMenu():
 def slotMenu():
 
     '''Displays the armor slot menu to the user'''
-    #destroy the main menu frame
+    #destroy the previous menu frame
     main_frame.destroy()
     #create new frame for current selection and display
     global slot_frame#make this global so the frame can be deleted in other menus without having to pass it
@@ -176,7 +179,7 @@ def slotMenu():
 def bossMenu():
 
     '''Displays the boss menu to the user'''
-    #destroy the main menu frame
+    #destroy the previous menu frame
     main_frame.destroy()
     #create new frame for current selection and display
     global boss_frame#make this global so the frame can be deleted in other menus without having to pass it
@@ -225,7 +228,7 @@ def idMenu():
 
     '''Display an Armor Piece based on a Unique ID entered by User'''
     
-    #destroy the main menu frame
+    #destroy the previous menu frame
     main_frame.destroy()
     #create new frame for current selection and display
     global id_frame#make this global so the frame can be deleted in other menus without having to pass it
@@ -265,7 +268,7 @@ def displayPlate():
     
     '''Displays all Plate Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     type_frame.destroy()
     #create new frame for current selection and display
     plate_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -285,7 +288,7 @@ def displayPlate():
 
         if armorType[i] == "Plate":
 
-            #create and display the armor selected     
+            #create and display the armor selected // headers are at row 1, so this starts at i + 1 (row 2)    
             armor_type = Label(plate_frame, text=f"{armorType[i]}", font=("Arial 24"), bg="white", padx=25)
             armor_type.grid(row=i + 1, column=0)
             armor_slot = Label(plate_frame, text=f"{armorSlot[i]}", font=("Arial 24"), bg="white", padx=25)
@@ -308,7 +311,7 @@ def displayMail():
     
     '''Displays all Mail Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     type_frame.destroy()
     #create new frame for current selection and display
     mail_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -351,7 +354,7 @@ def displayCloth():
     
     '''Displays all Cloth Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     type_frame.destroy()
     #create new frame for current selection and display
     cloth_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -394,7 +397,7 @@ def displayLeather():
     
     '''Displays all Leather Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     type_frame.destroy()
     #create new frame for current selection and display
     leather_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -437,7 +440,7 @@ def displayHead():
     
     '''Displays all Head Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     slot_frame.destroy()
     #create new frame for current selection and display
     head_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -480,7 +483,7 @@ def displayShoulders():
     
     '''Displays all Shoulder Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     slot_frame.destroy()
     #create new frame for current selection and display
     shoulder_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -523,7 +526,7 @@ def displayChest():
     
     '''Displays all Chest Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     slot_frame.destroy()
     #create new frame for current selection and display
     chest_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -566,7 +569,7 @@ def displayBelt():
     
     '''Displays all Belt Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     slot_frame.destroy()
     #create new frame for current selection and display
     belt_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -609,7 +612,7 @@ def displayBracers():
     
     '''Displays all Bracer Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     slot_frame.destroy()
     #create new frame for current selection and display
     bracers_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -652,7 +655,7 @@ def displayHands():
     
     '''Displays all Hand Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     slot_frame.destroy()
     #create new frame for current selection and display
     hands_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -695,7 +698,7 @@ def displayLegs():
     
     '''Displays all Leg Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     slot_frame.destroy()
     #create new frame for current selection and display
     legs_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -738,7 +741,7 @@ def displayBoots():
     
     '''Displays all Boot Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     slot_frame.destroy()
     #create new frame for current selection and display
     boots_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -781,7 +784,7 @@ def displayTarragrue():
     
     '''Displays all Tarragrue Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     boss_frame.destroy()
     #create new frame for current selection and display
     tarragrue_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -824,7 +827,7 @@ def displayEye():
     
     '''Displays all Eye of the Jailer Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     boss_frame.destroy()
     #create new frame for current selection and display
     eye_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -867,7 +870,7 @@ def displayNine():
     
     '''Displays all The Nine Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     boss_frame.destroy()
     #create new frame for current selection and display
     nine_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -910,7 +913,7 @@ def displayRemnant():
     
     '''Displays all Remnant of Ner'zhul Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     boss_frame.destroy()
     #create new frame for current selection and display
     remnant_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -953,7 +956,7 @@ def displaySoulrender():
     
     '''Displays all Soulrender Dormazain Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     boss_frame.destroy()
     #create new frame for current selection and display
     soulrender_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -996,7 +999,7 @@ def displayPainsmith():
     
     '''Displays all Painsmith Raznal Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     boss_frame.destroy()
     #create new frame for current selection and display
     painsmith_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -1039,7 +1042,7 @@ def displayGuardian():
    
     '''Displays all Guardian of the First Ones Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     boss_frame.destroy()
     #create new frame for current selection and display
     guardian_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -1082,7 +1085,7 @@ def displayFatescribe():
     
     '''Displays all Fatescribe Roh-Kalo Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     boss_frame.destroy()
     #create new frame for current selection and display
     fatescribe_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -1125,7 +1128,7 @@ def displayKT():
     
     '''Displays all Kel'Thuzad Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     boss_frame.destroy()
     #create new frame for current selection and display
     kt_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -1168,7 +1171,7 @@ def displaySylvanas():
     
     '''Displays all Sylvanas Windrunner Armor to User'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     boss_frame.destroy()
     #create new frame for current selection and display
     sylvanas_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -1209,7 +1212,7 @@ def displaySylvanas():
 
 def displayId(search):
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     id_frame.destroy()
     #create new frame for current selection and display
     idDisplay_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
@@ -1272,7 +1275,7 @@ def displayRandom():
 
     '''Displays a random piece of armor based on unique ID and random.choice()'''
 
-    #destroy the main menu frame
+    #destroy the previous menu frame
     main_frame.destroy()
     #create new frame for current selection and display
     random_frame = LabelFrame(root, text="", padx=5, pady=5, bg="white")
